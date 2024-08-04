@@ -1,0 +1,24 @@
+
+class Solution {
+    public int rangeSum(int[] nums, int n, int left, int right) {
+    //Array to store all subarray sum
+        int[] arr = new int[n * (n + 1) / 2];
+        int idx=0;
+        for(int i=0 ; i<n; i++){
+        int countSum=0;
+            for(int j=i; j<n; j++){
+                countSum+=nums[j];
+                arr[idx++]=countSum;
+            }
+        }
+//Sort the subarray 
+        Arrays.sort(arr);
+//Find the range of subarray sum
+        int ssum=0;
+        for(int i=left-1; i<right; i++){
+            ssum+=arr[i];
+        }
+        return ssum;
+
+    }
+}
